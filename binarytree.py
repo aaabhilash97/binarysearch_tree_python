@@ -130,9 +130,22 @@ class tree:
                         cond=True
                 else: return False
 		return True
-		
+	def isbst(self):
+		if self.left!=None:
+			if self.data<self.left.data:
+			 	return False
+		if self.right!=None:
+			if self.data>self.right.data:
+				return False
+		else:
+			if self.left!=None:
+				cond=self.left.isbst()
+				if not cond:return False
+			if self.right!=None:
+				cond=self.right.isbst()
+				if not cond:return False
+		return True
 a=tree(2)
 a.buildlist([1,3])
-b=tree(5)
-b.buildlist([4,7])
-print a.sametree(b)
+#a.data=10
+print a.isbst()
